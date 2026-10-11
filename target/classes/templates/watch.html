@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Watch Video | StreamApp</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+	<link th:href="@{/css/watch.css}" rel="stylesheet">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark">
+	    <div class="container">
+	        <a class="navbar-brand" href="/videos">
+	            <i class="bi bi-play-btn-fill brand-icon me-2"></i>
+	            Stream<span class="brand-accent">App</span>
+	        </a>
+	
+	        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+	            <span class="navbar-toggler-icon"></span>
+	        </button>
+	
+	        <div class="collapse navbar-collapse" id="mainNavbar">
+	            <ul class="navbar-nav ms-md-4">
+	                <li class="nav-item">
+	                    <a class="nav-link active" aria-current="page" href="/videos">
+	                        Videos
+	                    </a>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="/videos/upload">Upload</a>
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+	</nav>
+	
+	<main class="container">
+	    <header class="page-header">
+	        <h1 class="page-title">
+	            Enjoy Your <span class="gradient-text">Video</span>
+	        </h1>
+	        <p class="page-description">
+	            Stream smoothly with adaptive HLS playback and multiple quality options.
+	        </p>
+	    </header>
+	
+	    <div id="playerMessage" class="alert alert-info d-none" role="status" aria-live="polite"></div>
+	
+	    <section class="player-card">
+	        <div class="player-stage">
+	            <video id="video" controls playsinline preload="metadata" aria-label="Video player">
+	                Your browser does not support HTML video.
+	            </video>
+	        </div>
+	
+	        <div class="player-info">
+	            <div class="d-flex align-items-start justify-content-between flex-wrap gap-3">
+	                <div>
+	                    <h2 class="video-heading" id="videoTitle">Loading video...</h2>
+	                    <p class="video-subtitle mb-0">
+	                        <i class="bi bi-badge-hd text-primary me-1"></i>
+	                        HLS adaptive streaming
+	                    </p>
+	                </div>
+	
+	                <a href="/videos" class="btn btn-outline-secondary rounded-3">
+	                    <i class="bi bi-arrow-left me-1"></i>
+	                    Back to library
+	                </a>
+	            </div>
+	
+	            <div class="control-panel">
+	                <div class="quality-label">
+	                    <i class="bi bi-sliders"></i>
+	                    <label for="quality">Playback quality</label>
+	                </div>
+	
+	                <select class="form-select" id="quality" aria-label="Playback quality">
+	                    <option value="-1">Auto</option>
+	                </select>
+	
+	                <div class="player-status">
+	                    <span class="status-dot"></span>
+	                    <span id="qualityStatus">Initializing player...</span>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+	
+	    <section class="row g-4 mb-4">
+	        <div class="col-lg-6">
+	            <div class="info-card">
+	                <h2><i class="bi bi-stars text-primary me-2"></i>Playback features</h2>
+	
+	                <div class="info-item">
+	                    <div class="info-icon">
+	                        <i class="bi bi-arrow-repeat"></i>
+	                    </div>
+	                    <div>
+	                        <strong>Adaptive streaming</strong>
+	                        <p>Automatically adapts playback quality to available bandwidth.</p>
+	                    </div>
+	                </div>
+	
+	                <div class="info-item">
+	                    <div class="info-icon">
+	                        <i class="bi bi-display"></i>
+	                    </div>
+	                    <div>
+	                        <strong>Multiple resolutions</strong>
+	                        <p>Choose an available resolution manually or let the player select one.</p>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	
+	        <div class="col-lg-6">
+	            <div class="info-card">
+	                <h2><i class="bi bi-info-circle text-primary me-2"></i>Player information</h2>
+	
+	                <div class="info-item">
+	                    <div class="info-icon">
+	                        <i class="bi bi-hdd-network"></i>
+	                    </div>
+	                    <div>
+	                        <strong>Streaming format</strong>
+	                        <p>HTTP Live Streaming (HLS), using a master playlist and video segments.</p>
+	                    </div>
+	                </div>
+	
+	                <div class="info-item">
+	                    <div class="info-icon">
+	                        <i class="bi bi-phone"></i>
+	                    </div>
+	                    <div>
+	                        <strong>Device compatibility</strong>
+	                        <p>Uses hls.js where supported and native HLS playback where available.</p>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+	
+	    <footer class="footer-note">
+	        <i class="bi bi-play-btn-fill me-1"></i>
+	        StreamApp · Your videos, your way
+	    </footer>
+	</main>
+	
+	<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.13/dist/hls.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script th:src="@{/js/watch.js}"></script>
+
+</body>
+</html>
